@@ -1,0 +1,57 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: rpapko
+      changes:
+        - createTable:
+            tableName: account
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: password
+                  type: varchar(40)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: middle_name
+                  type: varchar(255)
+  - changeSet:
+      id: 2
+      author: rpapko
+      changes:
+        - insert:
+            tableName: account
+            columns:
+              - column:
+                  name: user_name
+                  value: rpapko
+              - column:
+                  name: first_name
+                  value: Ruslan
+              - column:
+                  name: last_name
+                  value: Papko
+              - column:
+                  name: middle_name
+                  value: Alexandrovich

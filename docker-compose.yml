@@ -1,0 +1,33 @@
+gateway:
+  build: gateway
+  restart: always
+  ports:
+    - 80:8080
+  links:
+    - redis
+    - account-service
+
+account-service:
+  build: account-service
+  restart: always
+#  env_file: dev.env
+  ports:
+    - 9000:8080
+  links:
+#    - account-mongodb
+    - redis
+
+#account-mongodb:
+#  build: mongodb
+#  restart: always
+#  env_file: dev.env
+#  environment:
+#    - INIT_DUMP=account_dump.js
+#  ports:
+#    - 27017:27017
+
+redis:
+  image: redis
+  restart: always
+  ports:
+    - 6379:6379
